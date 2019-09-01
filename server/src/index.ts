@@ -3,7 +3,7 @@
 // console.log("hello world");
 
 // const app = express();
-const { PORT = 3000 } = process.env;
+const PORT = Number(process.env.PORT) || 3000;
 // app.get("/", (_req: Request, res: Response) => {
 //   res.send({
 //     message: "hello world"
@@ -58,4 +58,6 @@ expressWs.app.ws("/shell", (ws, _req) => {
 
 console.log("listing on ", PORT);
 // // Start the application
-app.listen(PORT);
+app.listen(PORT, "localhost", () => {
+  console.log("... running %s mode", app.settings.env);
+});
